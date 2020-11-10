@@ -10,4 +10,4 @@ today=`date "+%y/%m/%d"`
 
 # "year_month_day, study_time_hour, study_time_minute"
 
-echo "$today, $stdlog_stdtime_hour, $stdlog_stdtime_minute" >> date.csv
+echo "$today, $stdlog_stdtime_hour, $stdlog_stdtime_minute" >> ~/stdlog/data.csv
