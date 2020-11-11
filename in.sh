@@ -5,8 +5,12 @@ stdlog_in_hour=`date "+%H"`
 stdlog_in_minute=`date "+%M"`
 #　勉強はじめの時間の計算
 stdlog_in=$(($stdlog_in_hour * 60 + $stdlog_in_minute))
+
+# .stdlog にデータとして記入
+echo $stdlog_in > ~/.stdlog/stdlog_in
+
 #　休み時間のクリア
-stdlog_breaktime=0
+echo "0" > ~/.stdlog/stdlog_breaktime
 
 # 表示の表示ｗ
 echo "$stdlog_in_hour時$stdlog_in_minute分！！"

@@ -7,6 +7,12 @@ stdlog_out_minute=`date "+%M"`
 #　終了データの計算
 stdlog_out=$(($stdlog_out_hour * 60 + $stdlog_out_minute))
 
+# 休み時間の取得
+stdlog_breaktime=`cat ~/.stdlog/stdlog_breaktime`
+
+# 初めの時間の取得
+stdlog_in=`cat ~/.stdlog/stdlog_in`
+
 #　勉強した分数の計算
 stdlog_stdtime_minute=$(($stdlog_out - ($stdlog_in + $stdlog_breaktime)))
 
