@@ -38,3 +38,7 @@ fi
 # "year_month_day, study_time_hour, study_time_minute"
 #　データの入力
 echo "$today,$stdlog_stdtime_hour,$stdlog_stdtime_minute" >> ~/stdlog/data.csv
+
+#　文字の表示
+echo "$stdlog_stdtime_hour時間勉強しました。"
+echo "お疲れ様です。(・_・;)"
