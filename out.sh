@@ -26,7 +26,7 @@ if [ $stdlog_stdtime_minute -le 0 ] ; then
 fi
 
 #　今日（当日の日にちの取得）
-today=`date "+%y:%m:%d"`
+today=`echo ~/.stdlog/stdlog_today`
 
 #　データにすでに今日のデータがあるかどうかのため
 stdlog_judge=`grep "$today" ~/stdlog/data.csv`
