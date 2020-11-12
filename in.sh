@@ -1,16 +1,21 @@
 #!/bin/sh
 
-today=`echo ~/.stdlog/stdlog_today`
-judge=`echo ~/stdlog/data.csv | grep $today`
+# 前回のデータの取得
+today=`cat ~/.stdlog/stdlog_today`
+judge=`cat ~/stdlog/data.csv | grep $today`
 
+# 前回のデータが残っているかの判別
 if [ "$judge" = "" ] ; then
 
+# 前回のデータが残っていない場合（outコマンドのシワスレの場合）
+echo "前回outのし忘れです。"
+
 # 終了データの取得
-read -p "$today は何時に勉強を終わりましたか？　時間を入力→:" stdlog_out_hour
-read -p "$today は何分に勉強を終わりましたか？　分数を入力→:" stdlog_out_minute
+read -p "$today は何時に勉強を終わりましたか？　時間を入力→:" stdlog_out_hour_out
+read -p "$today は何分に勉強を終わりましたか？　分数を入力→:" stdlog_out_minute_out
 
 #　終了データの計算
-stdlog_out=$(($stdlog_out_hour * 60 + $stdlog_out_minute))
+stdlog_out=$(($stdlog_out_hour_out * 60 + $stdlog_out_minute_out))
 
 # 休み時間の取得
 stdlog_breaktime=`cat ~/.stdlog/stdlog_breaktime`
@@ -37,11 +42,9 @@ echo "$today,$stdlog_stdtime_hour,$stdlog_stdtime_minute" >> ~/stdlog/data.csv
 #　文字の表示
 echo "$todayは$stdlog_stdtime_hour時間勉強しました。"
 echo "お疲れ様です。(・_・;)"
+echo ""
 
 fi
-
-
-
 today=`date "+%y:%m:%d"`
 echo "$today" > ~/.stdlog/stdlog_today
 
