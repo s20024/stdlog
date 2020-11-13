@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # 終了データの取得
-stdlog_out_hour=`date "+%H"`
-stdlog_out_minute=`date "+%M"`
+stdlog_out_hour=`date "+%H" | sed 's/^0//'`
+stdlog_out_minute=`date "+%M" | sed 's/^0//'`
 
 #　終了データの計算
 stdlog_out=$(($stdlog_out_hour * 60 + $stdlog_out_minute))
@@ -26,7 +26,7 @@ if [ $stdlog_stdtime_minute -le 0 ] ; then
 fi
 
 #　今日（当日の日にちの取得）
-today=`echo ~/.stdlog/stdlog_today`
+today=`cat ~/.stdlog/stdlog_today`
 
 #　データにすでに今日のデータがあるかどうかのため
 stdlog_judge=`grep "$today" ~/stdlog/data.csv`

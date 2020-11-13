@@ -4,6 +4,8 @@
 today=`cat ~/.stdlog/stdlog_today`
 judge=`cat ~/stdlog/data.csv | grep $today`
 
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 # 前回のデータが残っているかの判別
 if [ "$judge" = "" ] ; then
 
@@ -45,12 +47,16 @@ echo "お疲れ様です。(・_・;)"
 echo ""
 
 fi
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# 今日のデータの取得
 today=`date "+%y:%m:%d"`
 echo "$today" > ~/.stdlog/stdlog_today
 
 # 勉強開始のデータの取得
-stdlog_in_hour=`date "+%H"`
-stdlog_in_minute=`date "+%M"`
+stdlog_in_hour=`date "+%H" | sed 's/^0//'`
+stdlog_in_minute=`date "+%M" | sed 's/^0//'`
 #　勉強はじめの時間の計算
 stdlog_in=$(($stdlog_in_hour * 60 + $stdlog_in_minute))
 
